@@ -1,0 +1,32 @@
+{% extends "mainapp/master.html" %}
+
+{% block title %}
+Услуги
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="content-block">
+    <h2>Услуги</h2>
+
+    <ul>
+     {% for itm in services %}
+        {% if itm.cost != 0 %}
+        <li style="padding-bottom: 10px;">
+            <img src="{{ itm.image.url }}" alt="{{ itm.image }}" width="200" height="200">
+            {{ itm.name }}
+            <br>
+            <a href="{{ itm.id }}">
+                {% if itm.description != None %}
+                    {{ itm.description|slice:'0:14' }} ...
+                {% else %}
+                    Перейти
+                {% endif %}
+            </a>
+            <br>цена: {{ itm.cost }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

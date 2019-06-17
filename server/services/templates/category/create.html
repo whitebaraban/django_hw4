@@ -1,0 +1,23 @@
+{% extends "mainapp/master.html" %}
+
+{% block title %}
+Создание категории
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="content-block">
+      <h1>Создание категории</h1>
+      <form action="" method="POST">
+          {% csrf_token %}
+          {% for field in form %}
+          <label for="{{ field.name }}">{{ field.label }}</label>
+          <br>
+          {{ field }}
+          <br>
+          {% endfor %}
+          <input type="submit">
+      </form>
+  </div>
+</section>
+{% endblock %}
